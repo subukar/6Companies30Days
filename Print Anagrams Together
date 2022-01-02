@@ -1,0 +1,26 @@
+Question: Print Anagrams Together
+Given an array of strings, return all groups of strings that are anagrams. The groups must be created in order of their appearance in the original array. 
+
+Expected Time Complexity: O(N*|S|*log|S|), where |S| is the length of the strings.
+Expected Auxiliary Space: O(N*|S|), where |S| is the length of the strings.
+
+Code (C++):
+
+
+class Solution{
+  public:
+    vector<vector<string> > Anagrams(vector<string>& string_list) {
+        //code here
+        vector<vector<string>> ans;
+        unordered_map<string, vector<string>> mp;
+        for(int i=0;i<string_list.size();i++){
+            string word= string_list[i]; // To convert the word into its lexicographically sorted form.
+            sort(word.begin(), word.end());  
+            mp[word].push_back(string_list[i]); // The map will contain vectors of anagrams with key as the lexicographically sorted form of that vector.
+        }
+        for(auto it:mp){
+            ans.push_back(it.second); // ans will store the group of strings which are anagrams as 1 vector for each group.
+        }
+        return ans;
+    }
+};
