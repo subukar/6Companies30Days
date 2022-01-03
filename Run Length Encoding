@@ -1,0 +1,29 @@
+Question: 
+Given a string, Your task is to  complete the function encode that returns the run length encoded string for the given string.
+eg if the input string is “wwwwaaadexxxxxx”, then the function should return “w4a3d1e1x6″.
+You are required to complete the function encode that takes only one argument the string which is to be encoded and returns the encoded string.
+
+Code:
+
+string encode(string src)
+{     
+  //Your code here 
+  string result="";
+  result+=src[0];
+  int count=1;
+  for(int i=1;i<src.size();i++){
+      if(src[i]!=src[i-1]){
+          result+= to_string(count);
+          count=1;
+          result+=src[i];
+      }else{
+          count++;
+      }
+      
+  }
+  result+=to_string(count);
+  return result;
+}    
+
+Time Complexity: O(length of string)
+Space complexity: O(1).
